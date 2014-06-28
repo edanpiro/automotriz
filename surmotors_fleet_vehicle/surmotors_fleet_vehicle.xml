@@ -6,7 +6,6 @@
             <field name="name">Vehiculos</field>
             <field name="model">fleet.vehicle</field>
             <field name='inherit_id' ref='fleet.fleet_vehicle_form'/>
-            <!--<field eval="1" name="priority"/>-->
             <field name="arch" type="xml">
                 <field name="license_plate" position="replace"/>
                 <xpath expr="//button[@name='return_action_to_open']" position="replace"/>

@@ -135,7 +135,6 @@ class surmotors_fleet_vehicle_log_contract_service(osv.osv):
         dic['value']['price_unit'] = obj_product.list_price
         return dic
 
-
     _columns = {
         'product_id': fields.many2one('product.product', 'Servicio', domain="[('type', '=', 'consu')]"),
         'price_unit': fields.float('Precio'),
@@ -145,7 +144,6 @@ class surmotors_fleet_vehicle_log_contract_service(osv.osv):
             ('miles', 'Millas')), 'kilometraje'),
         #'total': fields.function(_get_total, type='float')
     }
-
 
 
 surmotors_fleet_vehicle_log_contract_service()
