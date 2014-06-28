@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-<<<<<<< HEAD
-=======
-        
->>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
         <!-- form -->
         <record id="view_form_add_attr_vehiculos" model="ir.ui.view">
             <field name="name">Vehiculos</field>
             <field name="model">fleet.vehicle</field>
             <field name='inherit_id' ref='fleet.fleet_vehicle_form'/>
-<<<<<<< HEAD
             <!--<field eval="1" name="priority"/>-->
             <field name="arch" type="xml">
                 <field name="license_plate" position="replace"/>
@@ -19,11 +14,6 @@
                 <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
                 <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
                 <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
-=======
-            <field eval="1" name="priority"/>
-            <field name="arch" type="xml">
-                <field name="license_plate" position="replace"/>
->>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
                 <field name="tag_ids" position="after">
                     <label for="res_partner_id" class="oe_edit_only"/>
                     <h2>
@@ -42,9 +32,5 @@
                 </field>
             </field>
         </record>
-<<<<<<< HEAD
-=======
-
->>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
     </data>
 </openerp>
