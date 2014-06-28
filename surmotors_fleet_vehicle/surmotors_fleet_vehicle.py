@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 # coding= utf-8
 
 
 from osv import fields, osv
 
 
-=======
-# -*- coding: utf-8 -*-
-from osv import fields, osv
-
->>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
 class fleet_vehicle(osv.osv):
     _name = "fleet.vehicle"
     _inherit = "fleet.vehicle"
@@ -22,7 +16,6 @@ class fleet_vehicle(osv.osv):
         'equipment_vehicle_id': fields.many2one('equipment.vehicle', 'Tipo de Equipo')
     }
 
-<<<<<<< HEAD
 
 fleet_vehicle()
 
@@ -62,6 +55,3 @@ class surmotors_fleet_vehicle_cost(osv.osv):
 
 
 surmotors_fleet_vehicle_cost()
-=======
-fleet_vehicle()
->>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
