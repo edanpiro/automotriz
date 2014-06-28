@@ -5,7 +5,6 @@ from osv import fields, osv
 
 
 class fleet_vehicle(osv.osv):
-    _name = "fleet.vehicle"
     _inherit = "fleet.vehicle"
     _description = "Gestion de Vehiculos"
 

@@ -3,7 +3,7 @@
     <data>
         <!-- form -->
         <record id="view_form_add_attr_vehiculos" model="ir.ui.view">
-            <field name="name">Vehiculos</field>
+            <field name="name">Vehiculo</field>
             <field name="model">fleet.vehicle</field>
             <field name='inherit_id' ref='fleet.fleet_vehicle_form'/>
             <field name="arch" type="xml">
