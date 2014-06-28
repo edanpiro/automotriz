@@ -1,1 +1,0 @@
-import form_carac_autos
