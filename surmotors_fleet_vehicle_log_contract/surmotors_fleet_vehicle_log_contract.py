@@ -5,8 +5,8 @@ import time
 from tools.translate import _
 import openerp.addons.decimal_precision as dp
 
+
 class surmotors_fleet_vehicle_log_contract(osv.osv):
-    _name = "fleet.vehicle.log.contract"
     _inherit = "fleet.vehicle.log.contract"
     _description = "Detalles del contrato"
 

@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-<<<<<<< HEAD
-=======
-        <!--<record id="view_vehicle_form" model="ir.ui.view">
-            <field name="name">fleet.vehicle</field>
-            <field name="model">fleet.vehicle</field>
-            <field name="inherit_id" ref="fleet.fleet_vehicle_form"/>
-            <field name="arch" type="xml">
-                <field name="driver_id" position="replace"/>
-                <xpath expr="/form/sheet/field[@class='oe_title']" position="replace">
-                </xpath> 
-            </field>
-        </record>-->
->>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
         <menuitem name="Pedido de Venta" id="venta" parent="fleet.fleet_vehicles" action="sale.action_orders"/>
         <menuitem name="Mantenimiento de Auto" id="manu_id" parent="fleet.fleet_vehicles" action="mrp.mrp_production_action"/>
         <menuitem name="Vehiculo" id="vehicle_menu" parent="base.menu_base_partner" sequence="6"/>
