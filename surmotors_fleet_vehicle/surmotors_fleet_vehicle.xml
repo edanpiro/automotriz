@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <!-- form -->
         <record id="view_form_add_attr_vehiculos" model="ir.ui.view">
             <field name="name">Vehiculo</field>
             <field name="model">fleet.vehicle</field>
