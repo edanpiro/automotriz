@@ -2,7 +2,6 @@
 <openerp>
     <data>
         <!-- form contrato -->
-<<<<<<< HEAD
         <record id="view_contract_form_inherit" model="ir.ui.view">
             <field name="name">fleet.vehicle.log.contract</field>
             <field name="model">fleet.vehicle.log.contract</field>
