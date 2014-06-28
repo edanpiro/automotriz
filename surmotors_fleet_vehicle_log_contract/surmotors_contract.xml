@@ -5,7 +5,7 @@
         <record id="view_contract_form_inherit" model="ir.ui.view">
             <field name="name">fleet.vehicle.log.contract</field>
             <field name="model">fleet.vehicle.log.contract</field>
-            <!--<field name="priority" eval="1"/>-->
+            <field name="priority" eval="1"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Contrato de Vehiculos" version="7.0">

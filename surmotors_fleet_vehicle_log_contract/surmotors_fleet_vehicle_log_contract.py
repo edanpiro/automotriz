@@ -67,7 +67,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         return self.write(cr, uid, ids, {'state': 'reserve'}, context=context)
 
     _columns = {
-        'res_partner_id' : fields.many2one('res.partner', 'Cliente', required=True),
+        'res_partner_id': fields.many2one('res.partner', 'Cliente', required=True),
         'contact_service_ids': fields.one2many('fleet.vehicle.log.contract.service', 'contact_id', 'Servicios',),
         #'combustible': fields.many2one('fleet.vehicle.log.fuel', 'Recepcion'),
         #'contact_service_ids': fields.one2many('fleet.vehicle.log.contract.service', 'contact_id', 'Servicios'),
