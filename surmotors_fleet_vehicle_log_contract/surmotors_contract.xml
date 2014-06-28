@@ -7,12 +7,6 @@
             <field name="name">fleet.vehicle.log.contract</field>
             <field name="model">fleet.vehicle.log.contract</field>
             <!--<field name="priority" eval="1"/>-->
-=======
-        <record id="view_contract_form" model="ir.ui.view">
-            <field name="name">fleet.vehicle.log.contract</field>
-            <field name="model">fleet.vehicle.log.contract</field>
-            <field name="priority" eval="1"/>
->>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Contrato de Vehiculos" version="7.0">
