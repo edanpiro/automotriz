@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- form -->
+        <record id="view_form_add_attr_client" model="ir.ui.view">
+            <field name="name">Clientes</field>
+            <field name="model">res.partner</field>
+            <field name='inherit_id' ref='base.view_partner_form'/>
+            <field name="arch" type="xml">
+                <page string="Internal Notes" position='before'>
+                    <page string="Vehiculo">
+                        <field name="res_partner_ids"/>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="form_res_partner_buttons_inherit" model="ir.ui.view">
+            <field name="name">Clientes</field>
+            <field name="model">res.partner</field>
+            <field name='inherit_id' ref='sale.res_partner_view_buttons'/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='%(sale.act_res_partner_2_sale_order)d']" position="replace"/>
+            </field>
+        </record>
+    </data>
+</openerp>

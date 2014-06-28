@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- form -->
+        <record id="view_bahia_form" model="ir.ui.view">
+            <field name="name">mrp.workcenter</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="priority" eval="6"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form  string="bahia" version="7.0">
+                    <header>
+                        <button string="ocupar" name="button_ocupar" icon="gtk-go-forward" attrs="{'invisible': [('state', '=', 'closed')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group col="4" colspan="2">
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="resource_type"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Informacion General">
+                            <label for="note"/>
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>   
+        </record>
+
+        <!-- actions -->
+        <record model="ir.actions.act_window" id="id_bahia">
+            <field name="name">mrp.workcenter</field>
+            <field name="res_model">mrp.workcenter</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <!-- menuitems -->
+        <!--<menuitem id="bahias_action" parent="mrp.menu_mrp_manufacturing" name="Bahias" action="id_bahia"/>-->
+    </data>
+</openerp>

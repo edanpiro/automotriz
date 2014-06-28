@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="product_tree_view">
+            <field name="name">product.product</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="categ_id" position="replace">
+                    <field name="categ_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

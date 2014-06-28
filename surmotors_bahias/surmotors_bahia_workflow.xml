@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- workflow -->
+        <record id="wkf_bahia" model="workflow">
+            <field name="name">mrp.workcenter.basic</field>
+            <field name="osv">mrp.workcenter</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <!-- activity -->
+        <record id="act_free" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_bahia"/>
+            <field name="flow_start">True</field>
+            <field name="name">free</field>
+        </record>
+        <record id="act_ocupar" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_bahia"/>
+            <field name="name">act_ocupar</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'busy'})</field>
+        </record>
+        <record id="act_liberar" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_bahia"/>
+            <field name="name">act_liberar</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'free'})</field>
+            <field name="flow_stop">True</field>
+        </record>
+
+        <!-- transition -->
+        <record id="trans_busy" model="workflow.transition">
+            <field name="act_from" ref="act_free"/>
+            <field name="act_to" ref="act_ocupar"/>
+            <field name="signal">button_ocupar</field>
+        </record>
+        <record id="trans_free" model="workflow.transition">
+            <field name="act_from" ref="act_ocupar"/>
+            <field name="act_to" ref="act_liberar"/>
+            <field name="signal">button_liberar</field>
+        </record>
+    </data>
+</openerp>

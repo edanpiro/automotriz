@@ -1,0 +1,2 @@
+import surmotors_res_partner
+

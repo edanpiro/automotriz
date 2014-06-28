@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- form  produccion-->
+        <record model="ir.ui.view" id="production_form_id">
+            <field name="name">mrp.production</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_planned" position="after">
+                        <field name="contract" on_change="onchange_ubication(contract)"/>
+                    </field>
+                    <field name="routing_id" position="replace">
+                        <field name="routing_id" required="1"/>
+                    </field>
+                    <field name="user_id" position="before">
+                        <field name="ubication"/>
+                    </field>
+                    <field name="origin" position="replace"/>
+                    <xpath expr="//tree/field[@name='hour']" position="before">
+                        <field name="delay" widget="float_time"/>
+                    </xpath>
+                    <xpath expr="//tree/field[@name='hour']" position="replace">
+                        <field name="hour" widget="float_time"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!-- tree produccion -->
+        <record model="ir.ui.view" id="production_tree_id">
+            <field name="name">mrp.production.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="origin" position="before">
+                        <field name="barra" widget="progressbar"/>
+                    </field>
+                    <field name="product_uom" position="replace">
+                        <field name="contract"/>
+                    </field>
+                    <field name="hour_total" position="replace">
+                        <field name="hour_total" widget="float_time"/>
+                    </field>
+                    <field name="product_qty" position="replace"/>
+                    <field name="cycle_total" position="replace"/>
+                    <field name="origin" position="replace"/>
+                </data>
+            </field>
+        </record>
+
+        <!-- tree orden de trabajo -->
+        <record model="ir.ui.view" id="production_workcenter_form_id">
+            <field name="name">mrp.production.workcenter.line</field>
+            <field name="model">mrp.production.workcenter.line</field>
+            <field name="inherit_id" ref="mrp_operations.mrp_production_workcenter_tree_view_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="qty" position="replace"/>
+                    <field name="uom" position="replace"/>
+                    <field name="workcenter_id" position="replace"/>
+                    <field name="cycle" position="replace">
+                        <field name="delay" widget="float_time"/>
+                    </field>
+                    <field name="hour" position="replace">
+                        <field name="hour" widget="float_time"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <!-- form  rutas de produccion (operaciones del centro de produccion) -->
+        <record model="ir.ui.view" id="mpr_routing_workcenter_form">
+            <field name="name">mrp.routing.workcenter.form</field>
+            <field name="model">mrp.routing.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_routing_workcenter_form_view"/>
+            <field name="arch" type="xml">
+                <field name="workcenter_id" position="replace">
+                    <field name="workcenter_id" domain="[('ubication','=','t')]"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- tree rutas de produccion (operaciones del centro de produccion) -->
+        <record model="ir.ui.view" id="mrp_routing_workcenter_tree">
+            <field name="name">mrp.routing.workcenter.tree</field>
+            <field name="model">mrp.routing.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_routing_workcenter_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="hour_nbr" position="replace">
+                    <field name="hour_nbr" widget="float_time"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

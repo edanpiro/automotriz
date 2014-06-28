@@ -1,0 +1,2 @@
+import surmotors_fleet_vehicle
+import surmotors_equipment_vehicle

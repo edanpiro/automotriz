@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- form -->
+        <record id="view_bahia_form" model="ir.ui.view">
+            <field name="name">mrp.workcenter</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="priority" eval="6"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form  string="bahia" version="7.0">
+                    <header>
+                        <button string="ocupar" name="button_ocupar" type="object" icon="gtk-go-forward" attrs="{'invisible': [('state', '=', 'busy')]}"/>
+                        <button string="liberar" name="state_free" type="object" icon="gtk-go-forward" attrs="{'invisible': [('state', '=', 'free')]}"/>
+                        <!--<button string="ocupar" name="button_ocupar" icon="gtk-go-forward" states="free"/>-->
+                        <!--<button string="Liberar" name="button_liberar" icon="gtk-go-forward" states="busy"/>-->
+                        <field name="state" widget="statusbar" statusbar_visible="free,busy"/>
+                    </header>
+                    <group>
+                        <group col="4" colspan="2">
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="ubication"/>
+                            <field name="resource_type"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Informacion General">
+                            <label for="note"/>
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>   
+        </record>
+
+        <!-- tree -->
+        <record id="view_bahia_tree" model="ir.ui.view">
+            <field name="name">mrp.workcenter.tree</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="before">
+                    <field name="state"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- actions -->
+        <record model="ir.actions.act_window" id="id_bahia">
+            <field name="name">mrp.workcenter</field>
+            <field name="res_model">mrp.workcenter</field>
+            <field name="view_mode">form</field>
+        </record>
+
+    </data>
+</openerp>

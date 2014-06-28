@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- form -->
+        <record id="view_form_add_attr" model="ir.ui.view">
+            <field name="name">Type Service</field>
+            <field name="model">sale.order</field>
+            <field name='inherit_id' ref='sale.view_order_form'/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+<<<<<<< HEAD
+                <field name="partner_id" position="before">
+                    <field name="contact" on_change="on_change_contact(contact)" widget="selection"/>
+=======
+                <field name="client_order_ref" position="after">
+                    <field name="type_service" modifiers="{}"/>
+                </field>
+                <field name="partner_id" position="before">
+                    <field name="contact" on_change="on_change_contact(contact)"/>
+>>>>>>> f8a9589ef4ac1ea8f890d7a038caadf3d943f095
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
