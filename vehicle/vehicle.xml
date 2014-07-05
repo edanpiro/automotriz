@@ -3,9 +3,9 @@
     <data>
         <menuitem name="Pedido de Venta" id="venta" parent="fleet.fleet_vehicles" action="sale.action_orders"/>
         <menuitem name="Mantenimiento de Auto" id="manu_id" parent="fleet.fleet_vehicles" action="mrp.mrp_production_action"/>
-        <menuitem name="Vehiculo" id="vehicle_menu" parent="base.menu_base_partner" sequence="6"/>
+        <menuitem name="Vehiculo" id="vehicle_menu" parent="base.menu_base_partner" groups="base.group_sale_salesman,base.group_sale_manager" sequence="6"/>
         <menuitem name="Vehiculo" id="children_vehicle" parent="vehicle_menu"/>
-        <menuitem name="Marca" id="children_make" parent="vehicle_menu" action="fleet.fleet_vehicle_model_brand_act"/>
-        <menuitem name="Modelo" id="children_model" parent="vehicle_menu" action="fleet.fleet_vehicle_model_act"/>
+        <menuitem name="Marca" id="children_make" parent="vehicle_menu" action="fleet.fleet_vehicle_model_brand_act" groups="base.group_sale_salesman,base.group_sale_manager"/>
+        <menuitem name="Modelo" id="children_model" parent="vehicle_menu" action="fleet.fleet_vehicle_model_act" groups="base.group_sale_salesman,base.group_sale_manager"/>
     </data>
 </openerp>

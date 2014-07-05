@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fleet_vehicle_model_access_right_user,fleet.fleet_vehicle_model_access_right,fleet.model_fleet_vehicle_model,base.group_sale_salesman,1,1,1,0
+fleet_vehicle_model_access_right_manager,fleet.fleet_vehicle_model_access_right,fleet.model_fleet_vehicle_model,base.group_sale_manager,1,0,0,0
+fleet_vehicle_access_right_user,fleet.fleet_vehicle_access_right"",fleet.model_fleet_vehicle,base.group_sale_salesman,1,1,1,0
+fleet_vehicle_access_right_manager,fleet.fleet_vehicle_access_right",fleet.model_fleet_vehicle,base.group_sale_manager,1,1,0,0

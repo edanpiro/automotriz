@@ -12,6 +12,7 @@
     "category": "Module Customized",
     "description": "Vehiculos",
     'init_xml': [
+        "security/ir.model.access.csv",
         "vehicle/vehicle.xml",
         "surmotors_sale_order/surmotors_sale_order.xml",
         "surmotors_res_partner/surmotors_res_partner.xml",
