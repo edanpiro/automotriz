@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record model="ir.ui.view" id="product_tree_view">
+        <record model="ir.ui.view" id="product_form_view">
             <field name="name">product.product</field>
             <field name="model">product.product</field>
-            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="inherit_id" ref="mrp.product_form_view_bom_button"/>
             <field name="arch" type="xml">
-                <field name="categ_id" position="replace">
-                    <field name="categ_id"/>
-                </field>
+                <xpath expr="//button[@name='%(mrp.product_open_bom)d']" position="replace">
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_form_procurement_inherit">
+            <field name="name">product.product</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="procurement.product_form_view_procurement_button"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='%(procurement.product_open_orderpoint)d']" position="replace">
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_form_expery_inherit">
+            <field name="name">product.product</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product_manufacturer.view_product_form_expiry"/>
+            <field name="arch" type="xml">
+                <group name="manufacturer" position="replace">
+                </group>
+                <group name="attributes" position="replace">
+                </group>
             </field>
         </record>
     </data>
