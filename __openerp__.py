@@ -27,7 +27,7 @@
         #"surmotors_bahias/surmotors_bahia_workflow.xml",
         "surmotors_production/surmotors_production_view.xml",
 #       "surmotors_fleet_vehicle_product/fleet_vehicle_product.xml",
-        "surmotors_product/surmotors_product_view.xml",
+        "product/surmotors_product_view.xml",
     ],
     'installable': True,
     'active': False
