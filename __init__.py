@@ -7,4 +7,5 @@ import surmotors_hr_employee
 import surmotors_fleet_vehicle_cost_tipo
 import surmotors_bahias
 import surmotors_production
+import product
 # import surmotors_fleet_vehicle_product

@@ -30,5 +30,15 @@
                 </group>
             </field>
         </record>
+        <record model="ir.ui.view" id="product_form_inherit">
+            <field name="name">product.product</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="list_price" position="replace">
+                    <field name="list_price" attrs="{'invisible': ['!',('type','=','service')]}"/>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>

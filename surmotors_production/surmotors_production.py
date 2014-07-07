@@ -1,10 +1,11 @@
-#encoding: utf-8
+# encoding: utf-8
 
 from osv import osv, fields
 from openerp import netsvc
 from tools.translate import _
 
 import time
+
 
 class production(osv.osv):
     _name = 'mrp.production'
@@ -83,12 +84,12 @@ class production(osv.osv):
 
         return {'value': value}
 
-
     _columns = {
         'contract': fields.many2one('fleet.vehicle.log.contract', 'Ref. Contrato', required=True),
         'barra': fields.function(_get_progress, method=True, string='progreso', type='float'),
         'ubication': fields.many2one('mrp.workcenter', 'Centro de Produccion',domain="[('ubication', '=', 'b')]"),
     }
+
 
 production()
 
@@ -134,5 +135,5 @@ class mrp_workcenter_line(osv.osv):
             work_center_pool.state_free(cr, uid, oper_obj.workcenter_id.id)
         return
 
-mrp_workcenter_line()
 
+mrp_workcenter_line()

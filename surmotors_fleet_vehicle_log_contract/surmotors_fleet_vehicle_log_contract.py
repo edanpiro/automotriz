@@ -105,7 +105,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         for obj_product in produc_val:
             product_id = obj_product[2]['product_id']
             mrp_bom_id = pool_mrp_bom.search(cr, uid, [('product_id', '=', product_id)])
-            mrp_bom_id = pool_mrp_bom.search(cr, uid, [('product_id' ,'=' ,product_id)])
+            mrp_bom_id = pool_mrp_bom.search(cr, uid, [('product_id', '=', product_id)])
             mrp_bom = pool_mrp_bom.browse(cr, uid, mrp_bom_id)
             contract = self.browse(cr, uid, contract_super)
             for obj_mrp_bom in mrp_bom:
@@ -136,7 +136,7 @@ class surmotors_fleet_vehicle_log_contract_service(osv.osv):
         return dic
 
     _columns = {
-        'product_id': fields.many2one('product.product', 'Servicio', domain="[('type', '=', 'consu')]"),
+        'product_id': fields.many2one('product.product', 'Servicio', domain="[('type', '=', 'service')]"),
         'price_unit': fields.float('Precio'),
         'contact_id': fields.many2one('fleet.vehicle.log.contract', 'contact'),
         'odometer_unit': fields.selection((
