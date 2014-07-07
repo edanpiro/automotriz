@@ -49,7 +49,7 @@
                             <page string="Servicios">
                                 <field name="contact_service_ids" attrs="{'readonly': [('state', '!=', 'open')]}">
                                     <tree string="" editable="top">
-                                        <field name="product_id" on_change="on_change_product(product_id)" required="1"/>
+                                        <field name="product_id" on_change="on_change_product(product_id)" required="1" widget="selection" domain="[('type','=','service')]"/>
                                         <field name="price_unit" required="1"/>
                                     </tree>
                                 </field>

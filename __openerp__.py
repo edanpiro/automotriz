@@ -18,10 +18,8 @@
         "surmotors_res_partner/surmotors_res_partner.xml",
         "surmotors_fleet_vehicle/surmotors_fleet_vehicle.xml",
         #"form_carac_autos/form_carac_autos.xml",
-        #"surmotors_fleet_vehicle_log_contract/surmotors_fleet_vehicle_log_contract.xml",
         "surmotors_fleet_vehicle_log_contract/surmotors_contract.xml",
         "surmotors_fleet_vehicle_log_contract/surmotors_contract_workflow.xml",
-#        "surmotors_fleet_vehicle_log_contract/surmotors_fleet_vehicle_log_contract_service.xml"
         "surmotors_hr_employee/surmotors_hr_employee.xml",
         "surmotors_bahias/surmotors_bahia_view.xml",
         #"surmotors_bahias/surmotors_bahia_workflow.xml",
