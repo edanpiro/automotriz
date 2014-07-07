@@ -137,3 +137,10 @@ class mrp_workcenter_line(osv.osv):
 
 
 mrp_workcenter_line()
+
+
+class mrp_bom(osv.osv):
+    _inherit = 'mrp.bom'
+
+
+mrp_bom()
