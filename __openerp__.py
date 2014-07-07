@@ -23,7 +23,7 @@
         "surmotors_hr_employee/surmotors_hr_employee.xml",
         "surmotors_bahias/surmotors_bahia_view.xml",
         #"surmotors_bahias/surmotors_bahia_workflow.xml",
-        "surmotors_production/surmotors_production_view.xml",
+        "mrp/surmotors_production_view.xml",
 #       "surmotors_fleet_vehicle_product/fleet_vehicle_product.xml",
         "product/surmotors_product_view.xml",
     ],
