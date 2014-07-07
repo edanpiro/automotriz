@@ -4,16 +4,29 @@
 from osv import fields, osv
 
 
-class fleet_vehicle(osv.osv):
+class fleet_vehicle(osv.Model):
     _inherit = "fleet.vehicle"
     _description = "Gestion de Vehiculos"
 
+    def _check_unique(self, cr, uid, ids, context=None):
+
+        for obj_fleet in self.browse(cr, uid, ids):
+            cr.execute('select name,license_plate from fleet_vehicle WHERE license_plate=%s', (obj_fleet.license_plate,))
+            res_ids = [x[1] for x in cr.fetchone()]
+            if len(res_ids) > 0:
+                return False
+            else:
+                return True
+
     _columns = {
+        'license_plate':  fields.char('License Plate', size=7, required=True, help='License plate number of the vehicle (ie: plate number for a car)'),
         'res_partner_id': fields.many2one('res.partner', 'Cliente', ),
         'nro_chasis': fields.char('Nro Chasis', size=32),
         'motor': fields.char('Motor', size=32),
         'equipment_vehicle_id': fields.many2one('equipment.vehicle', 'Tipo de Equipo')
     }
+
+    _constraints = [(_check_unique, 'El numero de placa ya existe', ['license_plate'])]
 
 
 fleet_vehicle()

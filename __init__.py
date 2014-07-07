@@ -1,9 +1,7 @@
-import vehicle
+import fleet
 import surmotors_sale_order
 import surmotors_res_partner
-import surmotors_fleet_vehicle
 import surmotors_fleet_vehicle_log_contract
-import surmotors_hr_employee
 import surmotors_fleet_vehicle_cost_tipo
 import surmotors_bahias
 import mrp

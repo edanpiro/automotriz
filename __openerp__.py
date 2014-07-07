@@ -13,10 +13,11 @@
     "description": "Vehiculos",
     'init_xml': [
         "security/ir.model.access.csv",
-        "vehicle/vehicle.xml",
+        "fleet/fleet_view.xml",
         "surmotors_sale_order/surmotors_sale_order.xml",
         "surmotors_res_partner/surmotors_res_partner.xml",
-        "surmotors_fleet_vehicle/surmotors_fleet_vehicle.xml",
+        "fleet/surmotors_fleet_vehicle.xml",
+        "fleet/fleet_view.xml",
         #"form_carac_autos/form_carac_autos.xml",
         "surmotors_fleet_vehicle_log_contract/surmotors_contract.xml",
         "surmotors_fleet_vehicle_log_contract/surmotors_contract_workflow.xml",
