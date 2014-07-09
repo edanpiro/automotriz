@@ -1,8 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <menuitem name="Pedido de Venta" id="venta" parent="fleet.fleet_vehicles" action="sale.action_orders"/>
-        <menuitem name="Mantenimiento de Auto" id="manu_id" parent="fleet.fleet_vehicles" action="mrp.mrp_production_action"/>
+        <!-- form fleet -->
+        <record id="view_form_add_attr_vehiculos" model="ir.ui.view">
+            <field name="name">Vehiculo</field>
+            <field name="model">fleet.vehicle</field>
+            <field name='inherit_id' ref='fleet.fleet_vehicle_form'/>
+            <field name="arch" type="xml">
+                <field name="license_plate" position="replace"/>
+                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
+                <xpath expr="//button[@name='act_show_log_cost']" position="replace"/>
+                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
+                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
+                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
+                <field name="tag_ids" position="after">
+                    <label for="res_partner_id" class="oe_edit_only"/>
+                    <h2>
+                        <field name="res_partner_id" modifiers="{}" class="oe_inline" placeholder='Cliente' domain="[('customer','=', True)]"/>
+                    </h2>
+                </field>
+                <field name="driver_id" position="before">
+                    <field name="license_plate" string="Placa"/>
+                </field>
+                <field name="car_value" position="after">
+                    <field name="nro_chasis"/>
+                    <field name="motor"/>
+                </field>
+            </field>
+        </record>
+        <!-- form contrato -->
+        <record id="view_contract_form_inherit" model="ir.ui.view">
+            <field name="name">fleet.vehicle.log.contract</field>
+            <field name="model">fleet.vehicle.log.contract</field>
+            <field name="priority" eval="1"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Contrato de Vehiculos" version="7.0">
+                    <header>
+                        <button name="contract_close" string="Ingresar" states="open,reserve"/>
+                        <button name="contract_reserve" string="Reservar" states="open"/>
+                        <button name="cancel_contract" string="Cancelar" states="reserve"/>
+                        <field name="state" widget="statusbar" statusbar_visible="open,reserve,closed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="vehicle_id" string="Vehiculo"/>
+                            <h1><field name="vehicle_id" on_change="on_change_vehicle(vehicle_id)"/></h1>
+                            <label for="res_partner_id" string="Cliente"/>
+                            <h1><field name="res_partner_id" modifiers="{}"/></h1>
+                        </div>
+                        <div class="oe_right oe_button_box" name="buttons">
+                        </div>
+                        <group>
+                            <group col="4" colspan="2">
+                                <field name="cost_subtype_id"/>
+                                <field name="date_reserve"/>
+                                <field name="purchaser_id" string="Responsable"/>
+                                <field name="center_production"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Servicios">
+                                <field name="contact_service_ids" attrs="{'readonly': [('state', '!=', 'open')]}">
+                                    <tree string="" editable="top">
+                                        <field name="product_id" on_change="on_change_product(product_id)" required="1" widget="selection" domain="[('type','=','service')]"/>
+                                        <field name="price_unit" required="1"/>
+                                    </tree>
+                                </field>
+                                <group col="3" colspan="6">
+                                    <group colspan="1">
+                                    </group>
+                                    <group colspan="1">
+                                    </group>
+                                    <group colspan="1">
+                                        <field name="total" colspan="1" widget="monetary" option="{'currency_id': 'currency_id'}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Inventario">
+                                <group string="Estado de Ingreso Vehicular">
+                                    <group col="2">
+                                        <field name="tire"/>
+                                    </group>
+                                    <group col="2">
+                                        <label for="odometer"/>
+                                        <div>
+                                            <field name="odometer" class="oe_inline"/>
+                                            <field name="odometer_unit" class="oe_inline"/>
+                                        </div>
+                                    </group>
+                                    <group col="2">
+                                        <field name="hydraulic_jack"/>
+                                    </group>
+                                    <group col="2">
+                                        <field name="attachment_rel" widget="many2many_binary"/>
+                                    </group>
+                                </group>
+                                <group string="Nota">
+                                    <field nolabel="1" name="notes"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- tree contrato -->
+        <record id="tree_contract" model="ir.ui.view">
+            <field name="name">tree.fleet.vehicle.log.contract</field>
+            <field name="model">fleet.vehicle.log.contract</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="insurer_id" position="replace">
+                        <field name="res_partner_id"/>
+                    </field>
+                    <field name="expiration_date" position="replace"/>
+                    <field name="cost_generated" position="replace"/>
+                    <field name="cost_frequency" position="replace"/>
+                    <field name="amount" position="replace">
+                        <field name="total"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <!-- form inventario -->
+        <record id="view_vehicle_form" model="ir.ui.view">
+            <field name="name">fleet.vehicle.log.fuel</field>
+            <field name="model">fleet.vehicle.log.fuel</field>
+            <field name='inherit_id' ref='fleet.fleet_vehicle_log_fuel_form'/>
+            <field name="arch" type="xml">
+                <field name="vehicle_id" position="after">
+                    <group col="2" string="Estado Inicial">
+                        <field name="llantas"/>
+                        <field name="gata"/>
+                    </group>
+                </field>
+                <field name="vendor_id" position="after">
+                    <field name="attachment_rel" widget="many2many_binary" modifiers="{}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="vehicle_action" model="ir.actions.act_window">
+            <field name="name">vehicle.log.fuel</field>
+            <field name="res_model">fleet.vehicle.log.fuel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--<menuitem name="Pedido de Venta" id="venta" parent="fleet.fleet_vehicles" action="sale.action_orders"/>
+        <menuitem name="Mantenimiento de Auto" id="manu_id" parent="fleet.fleet_vehicles" action="mrp.mrp_production_action"/>-->
         <menuitem name="Vehiculo" id="vehicle_menu" parent="base.menu_base_partner" groups="base.group_sale_salesman,base.group_sale_manager" sequence="6"/>
         <menuitem name="Vehiculo" id="children_vehicle" parent="vehicle_menu"/>
         <menuitem name="Marca" id="children_make" parent="vehicle_menu" action="fleet.fleet_vehicle_model_brand_act" groups="base.group_sale_salesman,base.group_sale_manager"/>

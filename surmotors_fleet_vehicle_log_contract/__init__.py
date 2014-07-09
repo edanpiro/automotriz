@@ -1,2 +1,0 @@
-import surmotors_fleet_vehicle_log_contract
-

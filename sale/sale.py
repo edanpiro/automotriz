@@ -36,11 +36,10 @@ class surmotors_sale_order(osv.osv):
                 'order_line': lista_detalles
             }
         }
-        # values["value"] = {"partner_id": obj_fleet_vehicle_log_contract.res_partner_id.id, 'order_line': lista_detalles, }
+
         return values
 
     _columns = {
-        # 'type_service': fields.many2one('fleet.service.type', 'Tipo de Servicio', readonly=True, required=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},),
         'contact': fields.many2one('fleet.vehicle.log.contract', 'Ref Contrato', required=True)
     }
 

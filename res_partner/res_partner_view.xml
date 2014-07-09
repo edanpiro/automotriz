@@ -10,7 +10,7 @@
             <field name="arch" type="xml">
                 <page string="Internal Notes" position='before'>
                     <page string="Vehiculo">
-                        <field name="res_partner_ids"/>
+                        <field name="res_partner_ids" readonly="True"/>
                     </page>
                 </page>
             </field>

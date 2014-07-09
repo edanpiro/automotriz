@@ -1,9 +1,37 @@
 # coding= utf-8
 
-from openerp.osv import fields, osv
 import time
+
+from osv import fields, osv
 from tools.translate import _
 import openerp.addons.decimal_precision as dp
+
+
+class fleet_vehicle(osv.Model):
+    _inherit = "fleet.vehicle"
+    _description = "Gestion de Vehiculos"
+
+    def _check_unique(self, cr, uid, ids, context=None):
+
+        for obj_fleet in self.browse(cr, uid, ids):
+            cr.execute('select name,license_plate from fleet_vehicle WHERE license_plate=%s', (obj_fleet.license_plate,))
+            res_ids = [x[1] for x in cr.fetchone()]
+            if len(res_ids) > 0:
+                return False
+            else:
+                return True
+
+    _columns = {
+        'license_plate':  fields.char('License Plate', size=7, required=True, help='License plate number of the vehicle (ie: plate number for a car)'),
+        'res_partner_id': fields.many2one('res.partner', 'Cliente', ),
+        'nro_chasis': fields.char('Nro Chasis', size=32),
+        'motor': fields.char('Motor', size=32),
+    }
+
+    _constraints = [(_check_unique, 'El numero de placa ya existe', ['license_plate'])]
+
+
+fleet_vehicle()
 
 
 class surmotors_fleet_vehicle_log_contract(osv.osv):
@@ -58,19 +86,12 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
             return res
         return False
 
-
-    #def _get_totatels(sef, cr, uid, ids, total, args, context=None):
-    #    dic = {}
-    #    total = self.get_total
-
     def contract_reserve(self, cr, uid, ids, context=None):
         return self.write(cr, uid, ids, {'state': 'reserve'}, context=context)
 
     _columns = {
         'res_partner_id': fields.many2one('res.partner', 'Cliente', required=True),
         'contact_service_ids': fields.one2many('fleet.vehicle.log.contract.service', 'contact_id', 'Servicios',),
-        #'combustible': fields.many2one('fleet.vehicle.log.fuel', 'Recepcion'),
-        #'contact_service_ids': fields.one2many('fleet.vehicle.log.contract.service', 'contact_id', 'Servicios'),
         'total': fields.function(get_total, digits_compute=dp.get_precision('Account'), string='Total'),
         'state': fields.selection([('open', 'In Progress'), ('reserve', 'Reservado'), ('cancel','Cancelar'), ('closed', 'Ingresado'),], 'Status', readonly=True, help='Choose wheter the contract is still valid or not'),
         'date_reserve': fields.date("Fecha de Reserva"),
@@ -122,6 +143,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
 
         return contract_super
 
+
 surmotors_fleet_vehicle_log_contract()
 
 
@@ -136,13 +158,12 @@ class surmotors_fleet_vehicle_log_contract_service(osv.osv):
         return dic
 
     _columns = {
-        'product_id': fields.many2one('product.product', 'Servicio', domain="[('type', '=', 'service')]"),
+        'product_id': fields.many2one('product.product', 'Servicio'),
         'price_unit': fields.float('Precio'),
         'contact_id': fields.many2one('fleet.vehicle.log.contract', 'contact'),
         'odometer_unit': fields.selection((
             ('kilometers', 'kilometros'),
             ('miles', 'Millas')), 'kilometraje'),
-        #'total': fields.function(_get_total, type='float')
     }
 
 
