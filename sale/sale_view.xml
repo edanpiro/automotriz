@@ -15,5 +15,6 @@
             </field>
         </record>
 
+        <menuitem name="Vehiculos" action="fleet.fleet_vehicle_act" parent="vehicle_menu" id="children_fleet" groups="base.group_sale_salesman,base.group_sale_manager"/>
     </data>
 </openerp>
