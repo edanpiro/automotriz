@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <!-- form -->
         <record model="ir.ui.view" id="product_form_view">
             <field name="name">product.product</field>
             <field name="model">product.product</field>
@@ -10,6 +11,7 @@
                 </xpath>
             </field>
         </record>
+
         <record model="ir.ui.view" id="product_form_procurement_inherit">
             <field name="name">product.product</field>
             <field name="model">product.product</field>
@@ -19,6 +21,7 @@
                 </xpath>
             </field>
         </record>
+
         <record model="ir.ui.view" id="product_form_expery_inherit">
             <field name="name">product.product</field>
             <field name="model">product.product</field>
@@ -30,6 +33,7 @@
                 </group>
             </field>
         </record>
+
         <record model="ir.ui.view" id="product_form_inherit">
             <field name="name">product.product</field>
             <field name="model">product.product</field>
@@ -40,15 +44,24 @@
                 </field>
             </field>
         </record>
-        
+
+        <!-- view kanban -->
+        <record id="open_view_product_kanban6" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="product.product_kanban_view"/>
+            <field name="act_window_id" ref="product_normal_action_sell2"/>
+        </record>
+
         <!-- actions -->
         <record id="product_normal_action2" model="ir.actions.act_window">
             <field name="name">Products</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.product</field>
-            <field name="domain">[('type','=','product')]</field>
             <field name="view_type">form</field>
+            <field name="context">{'default_type':'product'}</field>
             <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('type','=','product')]</field>
             <field name="view_id" ref="product.product_product_tree_view"/>
             <field name="search_view_id" ref="product.product_search_form_view"/>
             <field name="help" type="html">
@@ -60,15 +73,16 @@
               </p>
             </field>
         </record>
+
         <record id="product_normal_action_sell2" model="ir.actions.act_window">
-            <field name="name">Products</field>
+            <field name="name">Servicios</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.product</field>
-            <field name="domain">[('type','=','service')]</field>
             <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('type','=','service')]</field>
             <field name="view_type">form</field>
-            <field name="context">{"search_default_filter_to_sell":1}</field>
-            <field name="view_id" ref="product.product_product_tree_view"/>
+            <field name="context">{"search_default_filter_to_sell":1, 'default_type':'service'}</field>
+            <field name="view_id" ref="product.product_normal_form_view"/>
             <field name="search_view_id" ref="product.product_search_form_view"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
@@ -84,7 +98,34 @@
               </p>
             </field>
         </record>
+
+        <record id="product_normal_action_puchased2" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('type','=','product')]</field>
+            <field name="context">{"search_default_filter_to_purchase":1, 'default_type':'product'}</field>
+            <field name="view_id" ref="product.product_kanban_view"/>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new product.
+              </p><p>
+                You must define a product for everything you purchase, whether
+                it's a physical product, a consumable or services you buy to
+                subcontractants.
+              </p><p>
+                The product form contains detailed information to improve the
+                purchase process: prices, procurement logistics, accounting data,
+                available suppliers, etc.
+              </p>
+            </field>
+        </record>
+
         <menuitem action="product_normal_action2" id="stock.menu_stock_products_menu" parent="stock.menu_stock_product" sequence="1"/>
-        <menuitem name="Services" action="product_normal_action_sell2" id="product.menu_products" parent="base.menu_product" sequence="1"/>
+        <menuitem action="product_normal_action_sell2" id="product.menu_products" string="Services" parent="base.menu_product" sequence="1"/>
+      <menuitem name="Products" id="purchase.menu_procurement_partner_contact_form" action="product_normal_action_puchased2" parent="purchase.menu_procurement_management_product"/>
     </data>
 </openerp>

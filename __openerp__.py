@@ -20,7 +20,7 @@
         "surmotors_bahias/surmotors_bahia_view.xml",
         #"surmotors_bahias/surmotors_bahia_workflow.xml",
         "mrp/mrp_view.xml",
-        "product/surmotors_product_view.xml",
+        "product/product_view.xml",
     ],
     'installable': True,
     'active': False

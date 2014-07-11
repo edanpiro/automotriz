@@ -12,7 +12,7 @@ class product_template(osv.osv):
     }
 
     _defaults = {
-        'type': 'service'
+        #'type': 'service'
     }
 
 
