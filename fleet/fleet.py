@@ -147,7 +147,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
 surmotors_fleet_vehicle_log_contract()
 
 
-class surmotors_fleet_vehicle_log_contract_service(osv.osv):
+class fleet_vehicle_log_contract_service(osv.osv):
     _name = "fleet.vehicle.log.contract.service"
     _description = "Servicios"
 
@@ -167,7 +167,7 @@ class surmotors_fleet_vehicle_log_contract_service(osv.osv):
     }
 
 
-surmotors_fleet_vehicle_log_contract_service()
+fleet_vehicle_log_contract_service()
 
 
 class surmotors_fleet_vehicle_log_fuel(osv.osv):
