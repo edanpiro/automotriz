@@ -21,6 +21,7 @@
         #"surmotors_bahias/surmotors_bahia_workflow.xml",
         "mrp/mrp_view.xml",
         "product/product_view.xml",
+        "purchase/purchase_view.xml",
     ],
     'installable': True,
     'active': False

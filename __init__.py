@@ -4,3 +4,4 @@ import res_partner
 import surmotors_bahias
 import mrp
 import product
+import purchase
