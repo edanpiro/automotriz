@@ -16,5 +16,6 @@
         </record>
 
         <menuitem name="Vehiculos" action="fleet.fleet_vehicle_act" parent="vehicle_menu" id="children_fleet" groups="base.group_sale_salesman,base.group_sale_manager"/>
+        <menuitem name="Contratos de vehiculos" action="fleet.fleet_vehicle_log_contract_act" parent="base.menu_sales" id="fleet_vehicle_log_contract_menu_children" groups="base.group_sale_salesman,base.group_sale_manager,base.group_sale_salesman"/>
     </data>
 </openerp>
