@@ -9,6 +9,21 @@
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='%(mrp.product_open_bom)d']" position="replace">
                 </xpath>
+                <page string="Procurements" position="replace">
+                    <page string="Procurements" attrs="{'invisible':[('type','=','service')]}">
+                        <group name="procurement">
+                            <group name="general">
+                                <field name="cost_method" groups="product.group_costing_method"/>
+                                <field name="standard_price" attrs="{'readonly':[('cost_method','=','average')]}"/>
+                            </group>
+                            <group name="procurement_uom" groups="product.group_uom" string="Purchase">
+                                <field name="uom_po_id"/>
+                            </group>
+                        </group>
+                        <separator string="Description for Suppliers"/>
+                        <field name="description_purchase" placeholder="This note will be displayed on requests for quotation..."/>
+                    </page>
+                </page>
             </field>
         </record>
 
