@@ -56,5 +56,10 @@
             <field name="act_to" ref="act_closed"/>
             <field name="signal">contract_close</field>
         </record>
+        <record id="trans_closed2" model="workflow.transition">
+            <field name="act_from" ref="act_reserve"/>
+            <field name="act_to" ref="act_closed"/>
+            <field name="signal">create_service</field>
+        </record>
     </data>
 </openerp>

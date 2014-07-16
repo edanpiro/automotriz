@@ -8,18 +8,21 @@ import openerp.addons.decimal_precision as dp
 
 
 class fleet_vehicle(osv.Model):
-    _inherit = "fleet.vehicle"
+    _inherit = 'fleet.vehicle'
     _description = "Gestion de Vehiculos"
 
     def _check_unique(self, cr, uid, ids, context=None):
-
-        for obj_fleet in self.browse(cr, uid, ids):
-            cr.execute('select name,license_plate from fleet_vehicle WHERE license_plate=%s', (obj_fleet.license_plate,))
-            res_ids = [x[1] for x in cr.fetchone()]
-            if len(res_ids) > 0:
+        vehicle_id = self.search(cr, uid, [])
+        lst = [
+            obj_vehicle.license_plate.lower()
+            for obj_vehicle in self.browse(cr, uid, vehicle_id, context=context)
+            if obj_vehicle.license_plate and obj_vehicle.id not in ids
+        ]
+        for self_obj in self.browse(cr, uid, ids, context=context):
+            if self_obj.license_plate and \
+               self_obj.license_plate.lower() in lst:
                 return False
-            else:
-                return True
+            return True
 
     _columns = {
         'license_plate':  fields.char('License Plate', size=7, required=True, help='License plate number of the vehicle (ie: plate number for a car)'),
