@@ -20,3 +20,7 @@ access_mrp_workcenter_uer,mrp.workcenter.manager,mrp.model_mrp_workcenter,base.g
 access_mrp_workcenter_manager,mrp.workcenter.manager,mrp.model_mrp_workcenter,base.group_sale_manager,1,0,1,0
 access_mrp_routing_workcenter_user,mrp.routing.workcenter.manager,mrp.model_mrp_routing_workcenter,base.group_sale_salesman,1,0,1,0
 access_mrp_routing_workcenter_manager,mrp.routing.workcenter.manager,mrp.model_mrp_routing_workcenter,base.group_sale_manager,1,0,1,0
+access_mrp_production_workcenter_line_user,mrp.production.workcenter.line salesman,mrp.model_mrp_production_workcenter_line,stock.group_stock_user,1,0,0,0
+access_mrp_production_workcenter_line_manager,mrp.production.workcenter.line salesman,mrp.model_mrp_production_workcenter_line,stock.group_stock_manager,1,0,0,0
+access_mrp_production_product_line_user,mrp.production.product.line,mrp.model_mrp_production_product_line,stock.group_stock_user,1,0,0,0
+access_mrp_production_product_line_manager,mrp.production.product.line,mrp.model_mrp_production_product_line,stock.group_stock_manager,1,0,0,0

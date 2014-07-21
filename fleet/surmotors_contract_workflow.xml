@@ -9,6 +9,12 @@
         </record>
 
         <!-- activity -->
+        <record id="act_closed5" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_contract"/>
+            <field name="name">create_service</field>
+            <field name="kind">function</field>
+            <field name="action">create_service()</field>
+        </record>
         <record id="act_open" model="workflow.activity">
             <field name="wkf_id" ref="wkf_contract"/>
             <field name="flow_start">True</field>
@@ -55,11 +61,6 @@
             <field name="act_from" ref="act_reserve"/>
             <field name="act_to" ref="act_closed"/>
             <field name="signal">contract_close</field>
-        </record>
-        <record id="trans_closed2" model="workflow.transition">
-            <field name="act_from" ref="act_reserve"/>
-            <field name="act_to" ref="act_closed"/>
-            <field name="signal">create_service</field>
         </record>
     </data>
 </openerp>

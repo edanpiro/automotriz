@@ -22,6 +22,7 @@
         "mrp/mrp_view.xml",
         "product/product_view.xml",
         "purchase/purchase_view.xml",
+        "stock/stock_view.xml"
     ],
     'installable': True,
     'active': False

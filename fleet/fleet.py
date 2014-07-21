@@ -56,6 +56,19 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
 
         return self.write(cr, uid, ids, {'state': 'closed'}, context=context)
 
+    def create_service(self, cr, uid, ids, context=None):
+        print "Entro al boton de Servicio"
+
+        b = self.read(cr, uid, ids, ['contact_service_ids'], context=context)
+
+        for c in b:
+            for p in self.pool.get('fleet.vehicle.log.contract.service').browse(cr, uid, c['contact_service_ids']):
+                print "cccc", p.product_id.id
+                print "cccc", p.product_id.name
+
+        return True
+        #return self.write(cr, uid, ids, {'state': 'closed'}, context=context)
+
     def on_change_vehicle(self, cr, uid, ids, vehicle_id, context=None):
         if not vehicle_id:
             return {}

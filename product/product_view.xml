@@ -9,6 +9,9 @@
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='%(mrp.product_open_bom)d']" position="replace">
                 </xpath>
+                <xpath expr="//field[@name='type']" position="replace">
+                    <field name="type" readonly="True"/>
+                </xpath>
                 <page string="Procurements" position="replace">
                     <page string="Procurements" attrs="{'invisible':[('type','=','service')]}">
                         <group name="procurement">
