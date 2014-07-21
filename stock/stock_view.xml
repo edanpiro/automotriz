@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="main_menu_service" name="Servicios" parent="stock.menu_stock_root" sequence="2"/>
+        <menuitem name="Orden servicio" action="mrp.mrp_production_action" parent="main_menu_service" id="menu_service"/>
+    </data>
+</openerp>
