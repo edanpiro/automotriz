@@ -17,5 +17,10 @@
 
         <menuitem name="Vehiculos" action="fleet.fleet_vehicle_act" parent="vehicle_menu" id="children_fleet" groups="base.group_sale_salesman,base.group_sale_manager"/>
         <menuitem name="Contratos de vehiculos" action="fleet.fleet_vehicle_log_contract_act" parent="base.menu_sales" id="fleet_vehicle_log_contract_menu_children" groups="base.group_sale_salesman,base.group_sale_manager,base.group_sale_salesman"/>
+        <menuitem name="Caja" id="menu_cashier"/>
+        <menuitem name="Caja" id="menu_children_cashier" parent="menu_cashier"/>
+        <menuitem name="Facturas de cliente" id="menu_cashier2" action="account.action_invoice_tree1" parent="menu_children_cashier"/>
+        <menuitem name="Facturas rectificativas de cliente" id="menu_cashier3" action="account.action_invoice_tree3" parent="menu_children_cashier"/>
+        <menuitem name="Pago de recibos" id="menu_cashier4" action="account_voucher.action_sale_receipt" parent="menu_children_cashier"/>
     </data>
 </openerp>
