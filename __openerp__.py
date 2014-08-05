@@ -11,8 +11,11 @@
     "website": "",
     "category": "Module Customized",
     "description": "Vehiculos",
-    'init_xml': [
+    'data': [
+        "security/surmotors_security.xml",
         "security/ir.model.access.csv",
+    ],
+    'init_xml': [
         "sale/sale_view.xml",
         "res_partner/res_partner_view.xml",
         "fleet/fleet_view.xml",
@@ -22,7 +25,8 @@
         "mrp/mrp_view.xml",
         "product/product_view.xml",
         "purchase/purchase_view.xml",
-        "stock/stock_view.xml"
+        "stock/stock_view.xml",
+        "account/account_view.xml"
     ],
     'installable': True,
     'active': False

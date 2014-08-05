@@ -42,7 +42,6 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
     _description = "Detalles del contrato"
 
     def contract_close(self, cr, uid, ids, context=None):
-        print "Entro al boton ingresar contracto"
         mrp_production = self.pool.get('mrp.production')
         obj_fleet_contract = self.browse(cr, uid, ids, context=context)
 
@@ -56,15 +55,36 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
 
         return self.write(cr, uid, ids, {'state': 'closed'}, context=context)
 
+    def _search_routing(self, cr, uid, mrp_bom_id):
+        if not mrp_bom_id:
+            return False
+        mrp_bom = self.pool.get('mrp.bom')
+        mrp_bom_id = mrp_bom.browse(cr, uid, mrp_bom_id)
+        return mrp_bom_id.routing_id.id
+
     def create_service(self, cr, uid, ids, context=None):
-        print "Entro al boton de Servicio"
-
-        b = self.read(cr, uid, ids, ['contact_service_ids'], context=context)
-
-        for c in b:
-            for p in self.pool.get('fleet.vehicle.log.contract.service').browse(cr, uid, c['contact_service_ids']):
-                print "cccc", p.product_id.id
-                print "cccc", p.product_id.name
+        mrp_production = self.pool.get('mrp.production')
+        mrp_bom = self.pool.get('mrp.bom')
+        fleet_vehicle_service = self.pool.get('fleet.vehicle.log.contract.service')
+        for self_obj in self.browse(cr, uid, ids, context=context):
+            for obj_detail_service in self_obj.contact_service_ids:
+                if obj_detail_service.state == 'generate':
+                    args = [
+                        ('product_id', '=', obj_detail_service.product_id.id),
+                        ('sequence', '=', 0)
+                    ]
+                    mrp_bom_id = mrp_bom.search(cr, uid, args)
+                    bom_id = mrp_bom_id[0] if mrp_bom_id else False
+                    routing_id = self._search_routing(cr, uid, bom_id)
+                    values = {
+                        'contract': self_obj.id,
+                        'product_id': obj_detail_service.product_id.id,
+                        'product_uom': 1,
+                        'bom_id': bom_id,
+                        'routing_id': routing_id
+                    }
+                    mrp_production.create(cr, uid, values, context=context)
+                    fleet_vehicle_service.write(cr, uid, obj_detail_service.id, {'state': 'generated'})
 
         return True
         #return self.write(cr, uid, ids, {'state': 'closed'}, context=context)
@@ -173,6 +193,12 @@ class fleet_vehicle_log_contract_service(osv.osv):
         dic['value']['price_unit'] = obj_product.list_price
         return dic
 
+    def _get_state(self, cr, uid, context=None):
+        return (
+            ('generate', 'Por generar'),
+            ('generated', 'Generado')
+        )
+
     _columns = {
         'product_id': fields.many2one('product.product', 'Servicio'),
         'price_unit': fields.float('Precio'),
@@ -180,6 +206,11 @@ class fleet_vehicle_log_contract_service(osv.osv):
         'odometer_unit': fields.selection((
             ('kilometers', 'kilometros'),
             ('miles', 'Millas')), 'kilometraje'),
+        'state': fields.selection(_get_state, 'Estado')
+    }
+
+    _defaults = {
+        'state': 'generate'
     }
 
 

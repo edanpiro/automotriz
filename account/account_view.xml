@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="form_invoice_inherit">
+            <field name="name">account.invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="fiscal_position" position="after">
+                    <field name="type_voucher" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                    <field name="serie" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                    <field name="number_voucher" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

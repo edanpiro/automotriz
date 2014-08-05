@@ -24,3 +24,5 @@ access_mrp_production_workcenter_line_user,mrp.production.workcenter.line salesm
 access_mrp_production_workcenter_line_manager,mrp.production.workcenter.line salesman,mrp.model_mrp_production_workcenter_line,stock.group_stock_manager,1,0,0,0
 access_mrp_production_product_line_user,mrp.production.product.line,mrp.model_mrp_production_product_line,stock.group_stock_user,1,0,0,0
 access_mrp_production_product_line_manager,mrp.production.product.line,mrp.model_mrp_production_product_line,stock.group_stock_manager,1,0,0,0
+access_account_invoice_uinvoice,account.invoice,account.model_account_invoice,group_category_cashier_manager,1,1,1,1
+access_account_invoice_line_uinvoice,account.invoice.line,account.model_account_invoice_line,group_category_cashier_manager,1,1,1,1
