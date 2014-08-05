@@ -63,14 +63,6 @@
             </field>
         </record>
 
-        <!-- view kanban -->
-        <record id="open_view_product_kanban6" model="ir.actions.act_window.view">
-            <field name="sequence" eval="1"/>
-            <field name="view_mode">kanban</field>
-            <field name="view_id" ref="product.product_kanban_view"/>
-            <field name="act_window_id" ref="product_normal_action_sell2"/>
-        </record>
-
         <!-- actions -->
         <record id="product_normal_action2" model="ir.actions.act_window">
             <field name="name">Products</field>
@@ -140,6 +132,14 @@
                 available suppliers, etc.
               </p>
             </field>
+        </record>
+
+        <!-- view kanban -->
+        <record id="open_view_product_kanban6" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="product.product_kanban_view"/>
+            <field name="act_window_id" ref="product_normal_action_sell2"/>
         </record>
 
         <menuitem action="product_normal_action2" id="stock.menu_stock_products_menu" parent="stock.menu_stock_product" sequence="1"/>

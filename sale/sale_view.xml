@@ -15,7 +15,7 @@
             </field>
         </record>
 
-        <menuitem name="Vehiculos" action="fleet.fleet_vehicle_act" parent="vehicle_menu" id="children_fleet" groups="base.group_sale_salesman,base.group_sale_manager"/>
+        <menuitem name="Vehiculos" action="fleet.fleet_vehicle_act" parent="automotriz.vehicle_menu" id="children_fleet" groups="base.group_sale_salesman,base.group_sale_manager"/>
         <menuitem name="Contratos de vehiculos" action="fleet.fleet_vehicle_log_contract_act" parent="base.menu_sales" id="fleet_vehicle_log_contract_menu_children" groups="base.group_sale_salesman,base.group_sale_manager,base.group_sale_salesman"/>
         <menuitem name="Caja" id="menu_cashier" groups="group_category_cashier_manager"/>
         <menuitem name="Caja" id="menu_children_cashier" parent="menu_cashier" groups="group_category_cashier_manager"/>

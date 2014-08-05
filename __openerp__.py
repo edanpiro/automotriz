@@ -4,7 +4,7 @@
     "name": "Sur Motors",
     "version": "1.0",
     "depends": [
-        "base", "sale", "fleet", "hr",
+        "base", "sale", "fleet", "hr", "purchase",
         "mrp", "mrp_operations", "product_manufacturer"
     ],
     "auhtor": "Edgard Pimentel - SIDET",
@@ -12,21 +12,21 @@
     "category": "Module Customized",
     "description": "Vehiculos",
     'data': [
-        "security/surmotors_security.xml",
         "security/ir.model.access.csv",
     ],
     'init_xml': [
-        "sale/sale_view.xml",
+        "security/surmotors_security.xml",
         "res_partner/res_partner_view.xml",
         "fleet/fleet_view.xml",
-        "fleet/surmotors_contract_workflow.xml",
+        "sale/sale_view.xml",
         "surmotors_bahias/surmotors_bahia_view.xml",
         #"surmotors_bahias/surmotors_bahia_workflow.xml",
         "mrp/mrp_view.xml",
         "product/product_view.xml",
         "purchase/purchase_view.xml",
         "stock/stock_view.xml",
-        "account/account_view.xml"
+        "account/account_view.xml",
+        "fleet/surmotors_contract_workflow.xml",
     ],
     'installable': True,
     'active': False
