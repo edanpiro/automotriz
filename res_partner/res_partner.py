@@ -13,4 +13,6 @@ class res_partner(osv.osv):
     }
 
 
+
+
 res_partner()
