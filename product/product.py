@@ -13,10 +13,11 @@ class product_template(osv.osv):
     _columns = {
         'type': fields.selection([('service', 'Service'), ('product', 'Producto')], required=True),
         'standard_price': fields.float('Cost', digits_compute=dp.get_precision('Product Price'), help="Cost price of the product used for standard stock valuation in accounting and used as a base price on purchase orders.", groups="base.group_user"),
+        'list_price': fields.float('Sale Price', digits_compute=dp.get_precision('Product Price'), help="Base price to compute the customer price. Sometimes called the catalog price."),
     }
 
     _defaults = {
-        'standard_price': 10
+        'standard_price': 10,
     }
 
     def create(self, cr, uid, values, context=None):
@@ -27,6 +28,14 @@ class product_template(osv.osv):
                     ('No Precio'),
                     ('El precio de costo tiene que ser mayor a 10')
                 )
+
+        if 'list_price' in values:
+            list_price = values['list_price']
+            if not 50 <= list_price and values['type'] != 'product':
+                raise osv.except_osv(
+                    ('No Precio'),
+                    ('El precio de venta tiene que ser mayor a 50')
+                )
         return super(product_template, self).create(cr, uid, values, context=context)
 
     def write(self, cr, uid, ids, values, context=None):
@@ -36,6 +45,13 @@ class product_template(osv.osv):
                 raise osv.except_osv(
                     ('No Precio'),
                     ('El precio de costo tiene que ser mayor a 10')
+                )
+        if 'list_price' in values:
+            list_price = values['list_price']
+            if not 50 <= list_price:
+                raise osv.except_osv(
+                    ('No Precio'),
+                    ('El precio de venta tiene que ser mayor a 50')
                 )
         return super(product_template, self).write(cr, uid, ids, values, context=context)
 
