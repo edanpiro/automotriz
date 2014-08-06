@@ -19,7 +19,6 @@
     ],
     'init_xml': [
         "security/surmotors_security.xml",
-        "res_partner/res_partner_view.xml",
         "fleet/fleet_view.xml",
         "sale/sale_view.xml",
         "surmotors_bahias/surmotors_bahia_view.xml",
@@ -30,7 +29,8 @@
         "stock/stock_view.xml",
         "account/account_view.xml",
         "fleet/surmotors_contract_workflow.xml",
-        "hr/hr_view.xml"
+        "hr/hr_view.xml",
+        "res_partner/res_partner_view.xml",
     ],
     'installable': True,
     'active': False
