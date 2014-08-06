@@ -28,6 +28,7 @@
         "stock/stock_view.xml",
         "account/account_view.xml",
         "fleet/surmotors_contract_workflow.xml",
+        "hr/hr_view.xml"
     ],
     'installable': True,
     'active': False
