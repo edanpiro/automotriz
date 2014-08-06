@@ -81,7 +81,8 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
                         'product_id': obj_detail_service.product_id.id,
                         'product_uom': 1,
                         'bom_id': bom_id,
-                        'routing_id': routing_id
+                        'routing_id': routing_id,
+                        'ubication': self_obj.center_production.id
                     }
                     mrp_production.create(cr, uid, values, context=context)
                     fleet_vehicle_service.write(cr, uid, obj_detail_service.id, {'state': 'generated'})
@@ -126,7 +127,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         return self.write(cr, uid, ids, {'state': 'reserve'}, context=context)
 
     _columns = {
-        'res_partner_id': fields.many2one('res.partner', 'Cliente', required=True),
+        'res_partner_id': fields.many2one('res.partner', 'Cliente', domain=[('customer', '=', True)], required=True),
         'contact_service_ids': fields.one2many('fleet.vehicle.log.contract.service', 'contact_id', 'Servicios',),
         'total': fields.function(get_total, digits_compute=dp.get_precision('Account'), string='Total'),
         'state': fields.selection([('open', 'In Progress'), ('reserve', 'Reservado'), ('cancel','Cancelar'), ('closed', 'Ingresado'),], 'Status', readonly=True, help='Choose wheter the contract is still valid or not'),
@@ -138,6 +139,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         'odometer_unit': fields.selection([('kilometers', 'kilometros')]),
         'notes': fields.text('Notas'),
         'attachment_rel': fields.many2many('ir.attachment', 'fleet_vehicle_log_contract_attachment', 'fleet_vehicle_log_contract', 'attachment_id', 'Attachments'),
+        'employee_id': fields.many2one('hr.employee', 'Mecánico')
     }
 
     _defaults = {

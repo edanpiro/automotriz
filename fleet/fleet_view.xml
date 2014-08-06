@@ -55,8 +55,9 @@
                         <group>
                             <group col="4" colspan="2">
                                 <field name="date_reserve"/>
-                                <field name="purchaser_id" string="Responsable"/>
+                                <field name="purchaser_id" string="Responsable" invisible="True"/>
                                 <field name="center_production"/>
+                                <field name="employee_id" domain="[('department_id.name','=', 'mecanica')]"/>
                             </group>
                         </group>
                         <notebook>

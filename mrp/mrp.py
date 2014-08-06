@@ -88,6 +88,7 @@ class production(osv.osv):
         'contract': fields.many2one('fleet.vehicle.log.contract', 'Ref. Contrato', required=True),
         'barra': fields.function(_get_progress, method=True, string='progreso', type='float'),
         'ubication': fields.many2one('mrp.workcenter', 'Centro de Produccion',domain="[('ubication', '=', 'b')]"),
+        'employee_id': fields.many2one('hr.employee', 'Mecánico')
     }
 
 

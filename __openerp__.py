@@ -13,6 +13,7 @@
     "description": "Vehiculos",
     'data': [
         "security/ir.model.access.csv",
+        "data/department_data.xml"
     ],
     'init_xml': [
         "security/surmotors_security.xml",

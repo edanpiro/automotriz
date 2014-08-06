@@ -14,8 +14,8 @@
                     </page>
                 </page>
                 <field name="phone" position="before">
-                    <field name="vat"/>
-                    <field name="dni"/>
+                    <field name="vat" attrs="{'required': [('is_company','=',True)]}"/>
+                    <field name="dni" attrs="{'invisible':[('is_company','=','True')], 'required': [('is_company','=', False)]}"/>
                 </field>
             </field>
         </record>
