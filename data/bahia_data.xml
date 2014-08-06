@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="center_production1" model="mrp.workcenter">
+            <field name="name">Bahia1</field>
+            <field name="ubication">b</field>
+            <field name="resource_type">material</field>
+        </record>
+        <record id="center_production2" model="mrp.workcenter">
+            <field name="name">Bahia2</field>
+            <field name="ubication">b</field>
+            <field name="resource_type">material</field>
+        </record>
+        <record id="center_production3" model="mrp.workcenter">
+            <field name="name">Bahia3</field>
+            <field name="ubication">b</field>
+            <field name="resource_type">material</field>
+        </record>
+        <record id="center_production4" model="mrp.workcenter">
+            <field name="name">Bahia4</field>
+            <field name="ubication">b</field>
+            <field name="resource_type">material</field>
+        </record>
+    </data>
+</openerp>
