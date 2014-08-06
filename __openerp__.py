@@ -5,7 +5,8 @@
     "version": "1.0",
     "depends": [
         "base", "sale", "fleet", "hr", "purchase",
-        "mrp", "mrp_operations", "product_manufacturer"
+        "mrp", "mrp_operations", "product_manufacturer",
+        "board",
     ],
     "auhtor": "Edgard Pimentel - SIDET",
     "website": "",

@@ -38,7 +38,7 @@ fleet_vehicle()
 
 
 class surmotors_fleet_vehicle_log_contract(osv.osv):
-    _inherit = "fleet.vehicle.log.contract"
+    _inherit = 'fleet.vehicle.log.contract'
     _description = "Detalles del contrato"
 
     def contract_close(self, cr, uid, ids, context=None):
@@ -139,12 +139,13 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         'odometer_unit': fields.selection([('kilometers', 'kilometros')]),
         'notes': fields.text('Notas'),
         'attachment_rel': fields.many2many('ir.attachment', 'fleet_vehicle_log_contract_attachment', 'fleet_vehicle_log_contract', 'attachment_id', 'Attachments'),
-        'employee_id': fields.many2one('hr.employee', 'Mecánico')
+        'employee_id': fields.many2one('hr.employee', 'Mecánico'),
     }
 
     _defaults = {
         'date_reserve': lambda *a: time.strftime('%Y-%m-%d'),
-        'odometer_unit': 'kilometers'
+        'odometer_unit': 'kilometers',
+        'cost_subtype_id': False
     }
 
     def create(self, cr, uid, values, context=None):
