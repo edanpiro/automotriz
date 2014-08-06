@@ -26,3 +26,5 @@ access_mrp_production_product_line_user,mrp.production.product.line,mrp.model_mr
 access_mrp_production_product_line_manager,mrp.production.product.line,mrp.model_mrp_production_product_line,stock.group_stock_manager,1,0,0,0
 access_account_invoice_uinvoice,account.invoice,account.model_account_invoice,group_category_cashier_manager,1,1,1,1
 access_account_invoice_line_uinvoice,account.invoice.line,account.model_account_invoice_line,group_category_cashier_manager,1,1,1,1
+access_account_voucher_manager,account.voucher,account_voucher.model_account_voucher,group_category_cashier_manager,1,0,0,0
+access_account_voucher_line_manager,account.voucher.line,account_voucher.model_account_voucher_line,group_category_cashier_manager,1,0,0,0
