@@ -41,20 +41,6 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
     _inherit = 'fleet.vehicle.log.contract'
     _description = "Detalles del contrato"
 
-    def contract_close(self, cr, uid, ids, context=None):
-        mrp_production = self.pool.get('mrp.production')
-        obj_fleet_contract = self.browse(cr, uid, ids, context=context)
-
-        for fleet_contract in obj_fleet_contract:
-            for product in fleet_contract.contact_service_ids:
-                new_op = mrp_production.product_id_change(cr, uid, ids, product.product_id.id)
-                new_op['value']['product_id'] = product.product_id.id
-                new_op['value']['contract'] = fleet_contract.id
-                new_op['value']['ubication'] = fleet_contract.center_production.id
-                mrp_production.create(cr, uid, new_op['value'], context=context)
-
-        return self.write(cr, uid, ids, {'state': 'closed'}, context=context)
-
     def _search_routing(self, cr, uid, mrp_bom_id):
         if not mrp_bom_id:
             return False
@@ -62,7 +48,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         mrp_bom_id = mrp_bom.browse(cr, uid, mrp_bom_id)
         return mrp_bom_id.routing_id.id
 
-    def create_service(self, cr, uid, ids, context=None):
+    def contract_close(self, cr, uid, ids, context=None):
         mrp_production = self.pool.get('mrp.production')
         mrp_bom = self.pool.get('mrp.bom')
         fleet_vehicle_service = self.pool.get('fleet.vehicle.log.contract.service')
@@ -87,8 +73,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
                     mrp_production.create(cr, uid, values, context=context)
                     fleet_vehicle_service.write(cr, uid, obj_detail_service.id, {'state': 'generated'})
 
-        return True
-        #return self.write(cr, uid, ids, {'state': 'closed'}, context=context)
+        return self.write(cr, uid, ids, {'state': 'closed'}, context=context)
 
     def on_change_vehicle(self, cr, uid, ids, vehicle_id, context=None):
         if not vehicle_id:

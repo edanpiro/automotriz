@@ -110,5 +110,24 @@
                 </xpath>
             </field>
         </record>
+
+        <!-- Ruta de produccion -->
+        <record model="ir.ui.view" id="form_mrp_routing_inherit">
+            <field name="name">mrp.routing</field>
+            <field name="model">mrp.routing</field>
+            <field name="inherit_id" ref="mrp.mrp_routing_form_view"/>
+            <field name="arch" type="xml">
+                <field name="location_id" position="replace"/>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tree_mrp_routing_inherit">
+            <field name="name">mrp.routing</field>
+            <field name="model">mrp.routing</field>
+            <field name="inherit_id" ref="mrp.mrp_routing_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="location_id" position="replace"/>
+            </field>
+        </record>
     </data>
 </openerp>

@@ -37,10 +37,9 @@
             <field name="arch" type="xml">
                 <form string="Contrato de Vehiculos" version="7.0">
                     <header>
-                        <button name="contract_close" string="Ingresar" states="open,reserve"/>
+                        <button name="contract_close" string="Ingresar" states="reserve"/>
                         <button name="contract_reserve" string="Reservar" states="open"/>
                         <button name="cancel_contract" string="Cancelar" states="reserve"/>
-                        <button name="create_service" string="Crear Orden" type="object" states="reserve"/>
                         <field name="state" widget="statusbar" statusbar_visible="open,reserve,closed"/>
                     </header>
                     <sheet>

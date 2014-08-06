@@ -14,7 +14,8 @@
     "description": "Vehiculos",
     'data': [
         "security/ir.model.access.csv",
-        "data/department_data.xml"
+        "data/department_data.xml",
+        "data/bahia_data.xml"
     ],
     'init_xml': [
         "security/surmotors_security.xml",
