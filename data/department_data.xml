@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="hr_department1" model="hr.department">
+            <field name="name">Logistica</field>
+        </record>
+        <record id="hr_department2" model="hr.department">
+            <field name="name">Almacen</field>
+        </record>
+        <record id="hr_department3" model="hr.department">
+            <field name="name">Contabilidad</field>
+        </record>
+        <record id="hr_department4" model="hr.department">
+            <field name="name">Taller</field>
+        </record>
+        <record id="hr_department5" model="hr.department">
+            <field name="name">Ventas</field>
+        </record>
+    </data>
+</openerp>
