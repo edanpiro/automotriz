@@ -11,6 +11,10 @@
                     <field name="serie" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
                     <field name="number_voucher" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
                 </field>
+                <xpath expr="/form/header/button[@name='invoice_open']" position="after">
+                    <button name="print_boleta" string="Boleta" type="object" attrs="{'invisible':['|', ('state', '!=', 'open'), ('type_voucher', '!=', 'boleta')]}"/>
+                    <button name="print_factura" string="Factura" type="object" attrs="{'invisible':['|', ('state', '!=', 'open'), ('type_voucher', '!=', 'factura')]}"/>
+                </xpath>
             </field>
         </record>
     </data>

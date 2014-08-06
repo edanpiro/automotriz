@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document filename="index.pdf">
+    <template pageSize="(21.7cm, 29.0cm)" title="Test" author="Edgard" allowSplitting="5">
+        <pageTemplate id="main">
+            <frame id="first" x1="0cm" y1="0cm" width="21.7cm" height="25.6cm"/>
+            <frame id="first" x1="0cm" y1="0cm" width="21.7cm" height="16.2cm"/>
+        </pageTemplate>
+    </template>
+    <stylesheet>
+        <blockTableStyle id="head">
+            <blockAligment value="LEFT"/>
+            <blockValign value="MIDDLE"/>
+            <lineStyle kind="GRID" colorName="white" thickness="0" start="0,0" stop="-1,-1"/>
+        </blockTableStyle>
+        <blockTableStyle id="head2">
+            <blockAligment value="LEFT"/>
+            <blockValign value="MIDDLE"/>
+            <lineStyle kind="GRID" colorName="white" thickness="1" start="0,0" stop="-1,-1"/>
+        </blockTableStyle>
+        <!--<blockTableStyle id="details">
+            <blockAligment value="LEFT"/>
+        </blockTableStyle>-->
+        <paraStyle name="Standard" fontName="Helvetica-Bold" fontSize="9.0"/>
+        <paraStyle name="right" fontName="Helvetica-Bold" fontSize="9.0" alignment="right"/>
+        <paraStyle name="center" fontName="Helvetica-Bold" fontSize="9.0" alignment="center"/>
+    </stylesheet>
+    <story>
+        [[repeatIn(get_head(data['form']), 'c')]]
+        <blockTable style="head" colWidths="14.5cm" rowHeights="0.6cm, 0.6cm, 0.6cm">
+            <tr>
+                <td>
+                    <para style="Standard">[[(c.has_key('date_invoice') and c['date_invoice'])]]</para>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <para style="Standard">[[(c.has_key('customer') and c['customer'])]]</para>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <para style="Standard">[[(c.has_key('street') and c['street'])]]</para>
+                </td>
+            </tr>
+        </blockTable>
+        <spacer length="2.0cm"/>
+        <section>
+            [[repeatIn(get_details(data['form']), 'd')]]
+            <blockTable style="head" colWidths="1.0cm, 2.0cm,2.0cm,11.0cm,2.2cm, 2.2cm" rowHeights="0.5cm">
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <para style="center">[[(d.has_key('quantity') and d['quantity'])]]</para>
+                    </td>
+                    <td>
+                        <para style="center">[[(d.has_key('unit') and d['unit'])]]</para>
+                    </td>
+                    <td>
+                        <para style="Standard">[[(d.has_key('description') and d['description'])]]</para>
+                    </td>
+                    <td>
+                        <para style="center">[[(d.has_key('price_unit') and d['price_unit'])]]</para>
+                    </td>
+                    <td>
+                        <para style="Standard">[[(d.has_key('importe') and d['importe'])]]</para>
+                    </td>
+                </tr>
+            </blockTable>
+        </section>
+        <nextFrame/>
+        <blockTable style="head" colWidths="2.0cm,16.6cm, 2.2cm" rowHeights="0.6cm">
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <para style="Standard">[[(c.has_key('total_letters') and c['total_letters'])]]</para>
+                </td>
+                <td>
+                    <para style="Standard">[[(c.has_key('total') and c['total'])]]</para>
+                </td>
+            </tr>
+        </blockTable>
+    </story>
+</document>

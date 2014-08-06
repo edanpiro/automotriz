@@ -13,6 +13,10 @@
                         <field name="res_partner_ids" readonly="True"/>
                     </page>
                 </page>
+                <field name="phone" position="before">
+                    <field name="vat"/>
+                    <field name="dni"/>
+                </field>
             </field>
         </record>
 
