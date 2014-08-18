@@ -7,3 +7,4 @@ import product
 import purchase
 import account
 import hr
+import stock
