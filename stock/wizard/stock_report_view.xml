@@ -8,7 +8,7 @@
                 <form string="Reporte de Stock" version="7.0" class="oe_form_configuration">
                     <label string="Imprima el stock de sus productos"/>
                     <footer>
-                        <button name="report_stock" type="object" class="oe_highlight" string="Imprimir" ico="gtk-print"/>
+                        <button name="stock_report" type="object" class="oe_highlight" string="Imprimir" ico="gtk-print"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document filename="index.pdf">
+    <template pageSize="(15cm, 25cm)" title="Test" author="Edgard" allowSpliting="5">
+        <pageTemplate id="main">
+            <frame id="first" x1="1cm" y1="0cm" width="12cm" height="23cm"/>
+        </pageTemplate>
+    </template>
+    <stylesheet>
+        <paraStyle name="align_left" fontName="Helvetica" fontSize="8" aligment="left"/>
+    </stylesheet>
+    <story>
+        <section>
+            <blockTable>
+                [[ repeatIn(details(), 'd') ]]
+                <tr>
+                    <td>
+                        <para style="align_left">[[(d.has_key('name') and d['name'])]]</para>
+                    </td>
+                </tr>
+            </blockTable>
+        </section>
+    </story>
+</document>

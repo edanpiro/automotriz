@@ -13,7 +13,7 @@ class stock_report(osv.osv_memory):
         }
         return {
             'type': 'ir.actions.report.xml',
-            'report_name': 'RportStock',
+            'report_name': 'ReportStock',
             'datas': datas
         }
 
