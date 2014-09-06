@@ -31,8 +31,7 @@ class report_stock(report_sxw.rml_parse):
                 'qty_available': obj_product.qty_available
             })
 
-        print "result", result
         return result
 
 
-report_sxw.report_sxw('report.ReportStock', 'stock.inventory', 'addons/automotriz/stock/report/stock_product.rml', parser=report_stock, header=False)
+report_sxw.report_sxw('report.ReportStock', 'stock.inventory', 'addons/automotriz/stock/report/stock_product.rml', parser=report_stock, header=True)

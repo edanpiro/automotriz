@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <document filename="index.pdf">
-    <template pageSize="(15cm, 25cm)" title="Test" author="Edgard" allowSpliting="5">
+    <template pageSize="(21cm, 29.7cm)" title="Test" author="Edgard" allowSpliting="5">
         <pageTemplate id="main">
-            <frame id="first" x1="1cm" y1="0cm" width="12cm" height="23cm"/>
+            <frame id="first" x1="1cm" y1="0cm" width="21cm" height="25cm"/>
         </pageTemplate>
     </template>
     <stylesheet>
         <paraStyle name="align_left" fontName="Helvetica" fontSize="8" aligment="left"/>
+        <paraStyle name="align_center" fontName="Helvetica" fontSize="8" aligment="center"/>
     </stylesheet>
     <story>
+        <blockTable>
+            <tr>
+                <td>
+                    <para style="align_center">Producto</para>
+                </td>
+                <td>
+                    <para style="align_center">Stock</para>
+                </td>
+            </tr>
+        </blockTable>
         <section>
             <blockTable>
                 [[ repeatIn(details(), 'd') ]]
                 <tr>
                     <td>
                         <para style="align_left">[[(d.has_key('name') and d['name'])]]</para>
+                    </td>
+                    <td>
+                        <para style="align_left">[[(d.has_key('qty_available') and d['qty_available'] or '0')]]</para>
                     </td>
                 </tr>
             </blockTable>
