@@ -31,7 +31,8 @@
         "fleet/surmotors_contract_workflow.xml",
         "hr/hr_view.xml",
         "res_partner/res_partner_view.xml",
-        "stock/wizard/stock_report_view.xml"
+        "stock/wizard/stock_report_view.xml",
+        "deleted_menu.xml"
     ],
     'installable': True,
     'active': False

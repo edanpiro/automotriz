@@ -115,16 +115,16 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         'res_partner_id': fields.many2one('res.partner', 'Cliente', domain=[('customer', '=', True)], required=True),
         'contact_service_ids': fields.one2many('fleet.vehicle.log.contract.service', 'contact_id', 'Servicios',),
         'total': fields.function(get_total, digits_compute=dp.get_precision('Account'), string='Total'),
-        'state': fields.selection([('open', 'In Progress'), ('reserve', 'Reservado'), ('cancel','Cancelar'), ('closed', 'Ingresado'),], 'Status', readonly=True, help='Choose wheter the contract is still valid or not'),
+        'state': fields.selection([('open', 'In Progress'), ('reserve', 'Reservado'), ('cancel', 'Cancelar'), ('closed', 'Ingresado')], 'Status', readonly=True, help='Choose wheter the contract is still valid or not'),
         'date_reserve': fields.date("Fecha de Reserva"),
-        'center_production': fields.many2one('mrp.workcenter', 'Centro de Produccion', domain="[('ubication', '=', 'b')]",required=True),
+        'center_production': fields.many2one('mrp.workcenter', 'Centro de Produccion', domain="[('ubication', '=', 'b')]", required=True),
         'tire': fields.boolean('Llantas de Repuesto'),
         'hydraulic_jack': fields.boolean('Gata Hidraulica'),
         'odometer': fields.float('Valor de Odómetro'),
         'odometer_unit': fields.selection([('kilometers', 'kilometros')]),
         'notes': fields.text('Notas'),
         'attachment_rel': fields.many2many('ir.attachment', 'fleet_vehicle_log_contract_attachment', 'fleet_vehicle_log_contract', 'attachment_id', 'Attachments'),
-        'employee_id': fields.many2one('hr.employee', 'Mecánico'),
+        'employee_id': fields.many2one('hr.employee', 'Mecánico', required=True),
     }
 
     _defaults = {
@@ -134,7 +134,6 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
     }
 
     def create(self, cr, uid, values, context=None):
-        print "create \n values: %s" % values
         contract_super = super(surmotors_fleet_vehicle_log_contract, self).create(cr, uid, values, context=context)
         service_ids = values['contact_service_ids']
 
