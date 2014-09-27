@@ -28,7 +28,7 @@ class report_stock(report_sxw.rml_parse):
         for obj_product in product.browse(cr, uid, product_ids):
             result.append({
                 'name': obj_product.name,
-                'qty_available': obj_product.qty_available
+                'qty_available': int(obj_product.qty_available)
             })
 
         return result

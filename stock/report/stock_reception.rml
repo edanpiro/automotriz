@@ -16,10 +16,19 @@
         <blockTable>
             <tr>
                 <td>
+                    <para style="align_center">Fecha</para>
+                </td>
+                <td>
                     <para style="align_center">Producto</para>
                 </td>
                 <td>
-                    <para style="align_center">Stock</para>
+                    <para style="align_center">Cantidad</para>
+                </td>
+                <td>
+                    <para style="align_center">Tipo</para>
+                </td>
+                <td>
+                    <para style="align_center">Ubicacion</para>
                 </td>
             </tr>
         </blockTable>
@@ -28,10 +37,19 @@
                 [[ repeatIn(details(), 'd') ]]
                 <tr>
                     <td>
-                        <para style="align_left">[[(d.has_key('name') and d['name'])]]</para>
+                        <para style="align_left">[[(d.has_key('day') and d['day'])]]</para>
                     </td>
                     <td>
-                        <para style="align_left">[[(d.has_key('qty_available') and d['qty_available'] or '0')]]</para>
+                        <para style="align_left">[[(d.has_key('product_id') and d['product_id'] or '0')]]</para>
+                    </td>
+                    <td>
+                        <para style="align_left">[[(d.has_key('product_qty') and d['product_qty'])]]</para>
+                    </td>
+                    <td>
+                        <para style="align_left">[[(d.has_key('type') and d['type'])]]</para>
+                    </td>
+                    <td>
+                        <para style="align_left">[[(d.has_key('location_dest_id') and d['location_dest_id'])]]</para>
                     </td>
                 </tr>
             </blockTable>

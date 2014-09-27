@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <!-- form stock productos -->
         <record id="stock_report_wizard" model="ir.ui.view">
             <field name="name">stock.report</field>
             <field name="model">stock.report</field>
@@ -8,7 +9,7 @@
                 <form string="Reporte de Stock" version="7.0" class="oe_form_configuration">
                     <label string="Imprima el stock de sus productos"/>
                     <footer>
-                        <button name="stock_report" type="object" class="oe_highlight" string="Imprimir" ico="gtk-print"/>
+                        <button name="stock_report" type="object" class="oe_highlight" string="Imprimir" icon="gtk-print"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>
@@ -16,6 +17,38 @@
             </field>
         </record>
 
+        <!-- form stock recepcion -->
+        <record id="stock_reception_wizard" model="ir.ui.view">
+            <field name="name">stock.reception</field>
+            <field name="model">stock.reception</field>
+            <field name="arch" type="xml">
+                <form string="Reporte de Recepcion de Productos" version="7.0" class="oe_form_configuration">
+                    <footer>
+                        <button name="stock_reception" string="Imprimir" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- form stock price -->
+        <record id="stock_price_wizard" model="ir.ui.view">
+            <field name="name">stock.price</field>
+            <field name="model">stock.price</field>
+            <field name="arch" type="xml">
+                <form string="Reporte de Recepcion de Productos" version="7.0" class="oe_form_configuration">
+                    <label string="Imprima el stock por valorizacion"/>
+                    <footer>
+                        <button name="stock_price" string="Imprimir" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- action -->
         <record id="stock_report_action" model="ir.actions.act_window">
             <field name="name">Report de Stock</field>
             <field name="res_model">stock.report</field>
@@ -23,6 +56,22 @@
             <field name="target">new</field>
         </record>
 
+        <record id="stock_report_reception_action" model="ir.actions.act_window">
+            <field name="name">Reporte de Recepcion</field>
+            <field name="res_model">stock.reception</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="stock_report_price_action" model="ir.actions.act_window">
+            <field name="name">Reporte por valorizacion</field>
+            <field name="res_model">stock.price</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
         <menuitem name="Stock de productos" parent="stock.menu_stock_inventory_control" id="stock_report" action="stock_report_action" sequence='60'/>
+        <menuitem id="report_reception" parent="stock.menu_stock_inventory_control" name="Reporte recepcion" action="stock_report_reception_action" sequence="61"/>
+        <menuitem id="report_price" parent="stock.menu_stock_inventory_control" name="Reporte valorizacion" action="stock_report_price_action" sequence="62"/>
     </data>
 </openerp>
