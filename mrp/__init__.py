@@ -1,1 +1,2 @@
 import mrp
+import wizard
