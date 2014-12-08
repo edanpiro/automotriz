@@ -6,21 +6,24 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-                <field name="address_id" position="replace">
-                    <field name="address_id" readonly="True" on_change="onchange_address_id(address_id)" context="{'show_address': 1}" options='{"always_reload": True, "highlight_first_line": True}'/>
-                </field>
-                <field name="work_phone" position="replace">
-                    <field name="work_phone" readonly="True"/>
-                </field>
-                <field name="mobile_phone" position="replace">
-                    <field name="mobile_phone" readonly="True"/>
-                </field>
-                <field name="work_location" position="replace"/>
-                <field name="job_id" position="replace"/>
-                <field name="parent_id" position="replace"/>
-                <field name="coach_id" position="replace"/>
-                <field name="passport_id" position="replace"/>
-                <field name="bank_account_id" position="replace"/>
+                <xpath expr="//field[@name='work_location']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='coach_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='passport_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='bank_account_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
             </field>
         </record>
     </data>

@@ -25,7 +25,9 @@
             <field name="model">res.partner</field>
             <field name='inherit_id' ref='sale.res_partner_view_buttons'/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='%(sale.act_res_partner_2_sale_order)d']" position="replace"/>
+                <xpath expr="//button[@name='%(sale.act_res_partner_2_sale_order)d']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
             </field>
         </record>
     </data>

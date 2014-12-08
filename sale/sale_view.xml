@@ -10,7 +10,7 @@
             <field eval="1" name="priority"/>
             <field name="arch" type="xml">
                 <field name="partner_id" position="before">
-                    <field name="contact" on_change="on_change_contact(contact)" widget="selection"/>
+                    <field name="contact" on_change="on_change_contact(contact)" widget="selection" domain="[('state','=','closed'),('finished','=',True)]"/>
                 </field>
             </field>
         </record>

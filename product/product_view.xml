@@ -7,26 +7,18 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="mrp.product_form_view_bom_button"/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='%(mrp.product_open_bom)d']" position="replace">
+                <xpath expr="//button[@name='%(mrp.product_open_bom)d']" position="attributes">
+                    <attribute name="invisible">True</attribute>
                 </xpath>
-                <xpath expr="//field[@name='type']" position="replace">
-                    <field name="type" readonly="True"/>
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="readonly">True</attribute>
                 </xpath>
-                <page string="Procurements" position="replace">
-                    <page string="Procurements" attrs="{'invisible':[('type','=','service')]}">
-                        <group name="procurement">
-                            <group name="general">
-                                <field name="cost_method" groups="product.group_costing_method"/>
-                                <field name="standard_price" attrs="{'readonly':[('cost_method','=','average')]}"/>
-                            </group>
-                            <group name="procurement_uom" groups="product.group_uom" string="Purchase">
-                                <field name="uom_po_id"/>
-                            </group>
-                        </group>
-                        <separator string="Description for Suppliers"/>
-                        <field name="description_purchase" placeholder="This note will be displayed on requests for quotation..."/>
-                    </page>
-                </page>
+                <xpath expr="//page[@string='Procurements']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('type','=','service')]}</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Inventory']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('purchase_ok','=',False)]}</attribute>
+                </xpath>
             </field>
         </record>
 
@@ -35,7 +27,8 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="procurement.product_form_view_procurement_button"/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='%(procurement.product_open_orderpoint)d']" position="replace">
+                <xpath expr="//button[@name='%(procurement.product_open_orderpoint)d']" position="attributes">
+                    <attribute name="invisible">True</attribute>
                 </xpath>
             </field>
         </record>
@@ -45,10 +38,12 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product_manufacturer.view_product_form_expiry"/>
             <field name="arch" type="xml">
-                <group name="manufacturer" position="replace">
-                </group>
-                <group name="attributes" position="replace">
-                </group>
+                <xpath expr="//group[@name='manufacturer']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//group[@name='attributes']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
             </field>
         </record>
 
@@ -57,9 +52,9 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
-                <field name="list_price" position="replace">
-                    <field name="list_price" attrs="{'invisible': ['!',('type','=','service')]}"/>
-                </field>
+                <xpath expr="//field[@name='list_price']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['!',('type','=','service')]}</attribute>
+                </xpath>
             </field>
         </record>
 

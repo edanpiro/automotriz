@@ -11,19 +11,21 @@
                     <field name="date_planned" position="after">
                         <field name="contract" on_change="onchange_ubication(contract)"/>
                     </field>
-                    <field name="routing_id" position="replace">
-                        <field name="routing_id" required="1"/>
-                    </field>
+                    <xpath expr="//field[@name='routing_id']" position="attributes">
+                        <attribute name='required'>True</attribute>
+                    </xpath>
                     <field name="user_id" position="replace">
                         <field name="employee_id"/>
                         <field name="ubication"/>
                     </field>
-                    <field name="origin" position="replace"/>
+                    <xpath expr="//field[@name='origin']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
                     <xpath expr="//tree/field[@name='hour']" position="before">
                         <field name="delay" widget="float_time"/>
                     </xpath>
-                    <xpath expr="//tree/field[@name='hour']" position="replace">
-                        <field name="hour" widget="float_time"/>
+                    <xpath expr="//tree/field[@name='hour']" position="attributes">
+                        <attribute name="widget">float_time"</attribute>
                     </xpath>
                 </data>
             </field>
@@ -42,12 +44,18 @@
                     <field name="product_uom" position="replace">
                         <field name="contract"/>
                     </field>
-                    <field name="hour_total" position="replace">
-                        <field name="hour_total" widget="float_time"/>
-                    </field>
-                    <field name="product_qty" position="replace"/>
-                    <field name="cycle_total" position="replace"/>
-                    <field name="origin" position="replace"/>
+                    <xpath expr="//field[@name='hour_total']" position="attributes">
+                        <attribute name='widget'>float_time</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='product_qty']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='cycle_total']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='origin']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
                 </data>
             </field>
         </record>

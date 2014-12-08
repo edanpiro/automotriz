@@ -125,6 +125,7 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
         'notes': fields.text('Notas'),
         'attachment_rel': fields.many2many('ir.attachment', 'fleet_vehicle_log_contract_attachment', 'fleet_vehicle_log_contract', 'attachment_id', 'Attachments'),
         'employee_id': fields.many2one('hr.employee', 'Mecánico', required=True),
+        'finished': fields.boolean('Terminado'),
     }
 
     _defaults = {

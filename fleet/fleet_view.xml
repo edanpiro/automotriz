@@ -8,15 +8,25 @@
             <field name='inherit_id' ref='fleet.fleet_vehicle_form'/>
             <field name="arch" type="xml">
                 <field name="license_plate" position="replace"/>
-                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
-                <xpath expr="//button[@name='act_show_log_cost']" position="replace"/>
-                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
-                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
-                <xpath expr="//button[@name='return_action_to_open']" position="replace"/>
+                <xpath expr="//button[@string='Services']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@string='Fuel Logs']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@string='Costs']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@string='Odometer Logs']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@string='Contracts']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
                 <field name="tag_ids" position="after">
                     <label for="res_partner_id" class="oe_edit_only"/>
                     <h2>
-                        <field name="res_partner_id" modifiers="{}" class="oe_inline" placeholder='Cliente' domain="[('customer','=', True)]"/>
+                        <field name="res_partner_id" modifiers="{}" class="oe_inline" placeholder='Cliente' domain="[('customer','=', True)]" required="1"/>
                     </h2>
                 </field>
                 <field name="driver_id" position="before">
@@ -57,6 +67,7 @@
                                 <field name="purchaser_id" string="Responsable" invisible="True"/>
                                 <field name="center_production"/>
                                 <field name="employee_id" domain="[('department_id.name','=', 'Taller')]"/>
+                                <field name="finished" invisible="True"/>
                             </group>
                         </group>
                         <notebook>

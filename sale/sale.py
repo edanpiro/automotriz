@@ -43,5 +43,12 @@ class surmotors_sale_order(osv.osv):
         'contact': fields.many2one('fleet.vehicle.log.contract', 'Ref Contrato', required=True)
     }
 
+    def action_button_confirm(self, cr, uid, ids, context=None):
+        pool_contract = self.pool.get('fleet.vehicle.log.contract')
+        contract = self.browse(cr, uid, ids[0]).contact
+        if contract:
+            pool_contract.write(cr, uid, [contract.id], {'finished': True})
+        return super(surmotors_sale_order, self).action_button_confirm(cr, uid, ids, context)
+
 
 surmotors_sale_order()
