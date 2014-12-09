@@ -41,6 +41,12 @@
             <field name="model">mrp.workcenter</field>
             <field name="inherit_id" ref="mrp.mrp_workcenter_tree_view"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='resource_type']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
                 <field name="company_id" position="before">
                     <field name="state"/>
                 </field>

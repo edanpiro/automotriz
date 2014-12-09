@@ -17,5 +17,39 @@
                 </xpath>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="form_invoice_supplier_inherit">
+            <field name="name">account.invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_open']" position="attributes">
+                    <attribute name="groups">account.group_account_invoice,automotriz.group_category_pay</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(account.action_account_invoice_refund)d']" position="attributes">
+                    <attribute name="groups">account.group_account_invoice,automotriz.group_category_pay</attribute>
+                </xpath>
+                <xpath expr="//button[@name='invoice_cancel']" position="attributes">
+                    <attribute name="groups">account.group_account_invoice,automotriz.group_category_pay</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_cancel_draft']" position="attributes">
+                    <attribute name="groups">account.group_account_invoice,automotriz.group_category_pay</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(account.action_account_state_open)d']" position="attributes">
+                    <attribute name="groups">account.group_account_invoice,automotriz.group_category_pay</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="invoice_supplier_cancel_inherit" model="ir.ui.view">
+            <field name="name">invoice.supplier</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_cancel.invoice_supplier_cancel_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_cancel']" position="attributes">
+                    <attribute name="groups">account.group_account_invoice,automotriz.group_category_pay</attribute>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>

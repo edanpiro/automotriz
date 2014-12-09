@@ -7,5 +7,10 @@
         <delete model="ir.ui.menu" id="fleet.fleet_vehicle_service_types_menu"/>
         <delete model="ir.ui.menu" id="fleet.fleet_vehicle_state_menu"/>
         <delete model="ir.ui.menu" id="fleet.fleet_vehicle_odometer_menu"/>
+        <menuitem name="Invoicing"
+            id="account.menu_finance"
+            groups="account.group_account_user,account.group_account_manager,account.group_account_invoice,group_category_pay"
+            sequence="50"/>
+        <menuitem id="account.menu_finance_payables" name="Suppliers" parent="account.menu_finance" sequence="3" groups="account.group_account_user,account.group_account_manager,account.group_account_invoice,group_category_pay"/>
     </data>
 </openerp>
