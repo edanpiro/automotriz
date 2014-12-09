@@ -41,7 +41,9 @@ class production(osv.osv):
             if bahia:
                 pass
             else:
-                raise osv.except_osv(_('Error'),_("La bahia se encuentra ocupada favor de liberarla o escoger otra bahia en el contrato"))
+                raise osv.except_osv(
+                    _('Error'),
+                    _("La bahia se encuentra ocupada favor de liberarla o escoger otra bahia en el contrato"))
             #obj_workcenter_line = self.pool.get('mrp.production.workcenter.line')
             #search = obj_workcenter_line.search(cr, uid, [('production_id', 'in', ids)])
             #print "search",len(search)

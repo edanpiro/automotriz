@@ -68,7 +68,8 @@ class surmotors_fleet_vehicle_log_contract(osv.osv):
                         'product_uom': 1,
                         'bom_id': bom_id,
                         'routing_id': routing_id,
-                        'ubication': self_obj.center_production.id
+                        'ubication': self_obj.center_production.id,
+                        'employee_id': self_obj.employee_id.id
                     }
                     mrp_production.create(cr, uid, values, context=context)
                     fleet_vehicle_service.write(cr, uid, obj_detail_service.id, {'state': 'generated'})
