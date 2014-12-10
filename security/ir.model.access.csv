@@ -28,3 +28,8 @@ access_account_invoice_uinvoice,account.invoice,account.model_account_invoice,gr
 access_account_invoice_line_uinvoice,account.invoice.line,account.model_account_invoice_line,group_category_cashier_manager,1,1,1,1
 access_account_voucher_manager,account.voucher,account_voucher.model_account_voucher,group_category_cashier_manager,1,0,0,0
 access_account_voucher_line_manager,account.voucher.line,account_voucher.model_account_voucher_line,group_category_cashier_manager,1,0,0,0
+access_account_move,account.move,account.model_account_move,group_category_pay,1,1,1,0
+access_account_move_line,account.move_line,account.model_account_move_line,group_category_pay,1,1,1,0
+access_account_voucher_pay,account.voucher,account_voucher.model_account_voucher,group_category_pay,1,1,1,0
+access_account_voucher_line_pay,account.voucher.line,account_voucher.model_account_voucher_line,group_category_pay,1,1,1,0
+access_account_move_reconcile_pay,account.move_reconcile,account.model_account_move_reconcile,group_category_pay,1,1,1,0
